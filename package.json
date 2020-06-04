@@ -23,9 +23,7 @@
     "mocha": "^7.1.2",
     "tslint": "^6.1.2",
     "typedoc": "^0.17.6",
-    "typescript": "^3.9.2"
-  },
-  "dependencies": {
+    "typescript": "^3.9.2",
     "random-js": "^2.1.0"
   },
   "husky": {
