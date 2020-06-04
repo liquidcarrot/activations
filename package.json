@@ -1,6 +1,6 @@
 {
-  "name": "activationfunctions",
-  "version": "0.0.1",
+  "name": "activations",
+  "version": "1.0.0",
   "description": "A collection of activation functions",
   "main": "index.js",
   "scripts": {
