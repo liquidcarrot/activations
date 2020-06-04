@@ -6,9 +6,9 @@ import {expect} from "chai";
 const random: Random = new Random();
 
 describe("Activation", () => {
+    const deltaValue = Math.exp(-10);
     for (let i: number = 0; i < 100; i++) {
         const value = random.real(-100, 100);
-        const deltaValue = Math.exp(-10);
 
         it("Identity value=" + value + "; derivative=false", () => {
             expect(Activation.Identitiy(value, false)).closeTo(value, deltaValue);
