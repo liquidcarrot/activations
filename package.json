@@ -1,0 +1,36 @@
+{
+  "name": "activationfunctions",
+  "version": "0.0.1",
+  "description": "A collection of activation functions",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "deploy:docs": "typedoc --options typedoc.json",
+    "test": "tsc && mocha build/test --recursive",
+    "lint": "tslint --project ./"
+  },
+  "repository": {
+    "type": "git",
+    "url": "\t"
+  },
+  "author": "Manuel Raimann",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/chai": "^4.2.11",
+    "@types/mocha": "^7.0.2",
+    "chai": "^4.2.0",
+    "husky": "^4.2.5",
+    "mocha": "^7.1.2",
+    "tslint": "^6.1.2",
+    "typedoc": "^0.17.6",
+    "typescript": "^3.9.2"
+  },
+  "dependencies": {
+    "random-js": "^2.1.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm test"
+    }
+  }
+}

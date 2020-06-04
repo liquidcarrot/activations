@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "target": "es6",
+    "moduleResolution": "node",
+    "sourceMap": false,
+    "outDir": "build",
+    "allowJs": false,
+    "declaration": true,
+    "declarationMap": false,
+    "declarationDir": "build"
+  },
+  "include": [
+    "src/**/*",
+    "test/**/*"
+  ]
+}
