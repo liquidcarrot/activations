@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "deploy:docs": "typedoc --options typedoc.json",
+    "deploy:docs": "typedoc --theme minimal --inputFiles ./src --name Activations --includeVersion",
     "test": "tsc && mocha build/test --recursive",
     "lint": "tslint --project ./"
   },
