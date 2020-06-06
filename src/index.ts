@@ -214,9 +214,9 @@ const Sinusiod = (x: number, derivative: boolean = false): number => {
  */
 const Sinc = (x: number, derivative: boolean = false): number => {
     if (!derivative) {
-        return x == 0 ? 1 : Math.sin(x) / x;
+        return x === 0 ? 1 : Math.sin(x) / x;
     } else {
-        return x == 0 ? 0 : Math.cos(x) / x - Math.sin(x) / x ** 2;
+        return x === 0 ? 0 : Math.cos(x) / x - Math.sin(x) / x ** 2;
     }
 };
 

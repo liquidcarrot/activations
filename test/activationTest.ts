@@ -147,10 +147,10 @@ describe("Activation", () => {
         });
 
         it("Sinc value=" + value + "; derivative=false", () => {
-            expect(Sinc(value, false)).closeTo(value == 0 ? 1 : Math.sin(value) / value, deltaValue);
+            expect(Sinc(value, false)).closeTo(value === 0 ? 1 : Math.sin(value) / value, deltaValue);
         });
         it("Sinc value=" + value + "; derivative=true", () => {
-            expect(Sinc(value, true)).closeTo(value == 0 ? 0 : Math.cos(value) / value - Math.sin(value) / (value * value), deltaValue);
+            expect(Sinc(value, true)).closeTo(value === 0 ? 0 : Math.cos(value) / value - Math.sin(value) / (value * value), deltaValue);
         });
         it("GAUSSIAN value=" + value + "; derivative=false", () => {
             expect(GAUSSIAN(value, false)).closeTo(Math.exp(-value * value), deltaValue);

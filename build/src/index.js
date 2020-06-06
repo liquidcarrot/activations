@@ -1,5 +1,5 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
+Object.defineProperty(exports, "__esModule", {value: true});
 exports.GAUSSIAN = exports.Sinc = exports.Sinusiod = exports.SiLU = exports.BentIdentity = exports.SoftPlus = exports.LeakyRELU = exports.RELU = exports.SoftSign = exports.ArSinH = exports.ArcTan = exports.SQNL = exports.TANH = exports.Logistic = exports.BinaryStep = exports.Identitiy = void 0;
 /**
  * The Identity activation function.
@@ -16,12 +16,11 @@ exports.Identitiy = Identitiy;
  * @param derivative calculate the derivative
  */
 const BinaryStep = (x, derivative = false) => {
-    if (!derivative) {
-        return x < 0 ? 0 : 1;
-    }
-    else {
-        return 0;
-    }
+	if (!derivative) {
+		return x < 0 ? 0 : 1;
+	} else {
+		return 0;
+	}
 };
 exports.BinaryStep = BinaryStep;
 /**
@@ -31,13 +30,12 @@ exports.BinaryStep = BinaryStep;
  * @param derivative calculate the derivative
  */
 const Logistic = (x, derivative = false) => {
-    const negativeEX = Math.exp(-x);
-    if (!derivative) {
-        return 1 / (1 + negativeEX);
-    }
-    else {
-        return 1 / (1 + negativeEX) * (1 - 1 / (1 + negativeEX));
-    }
+	const negativeEX = Math.exp(-x);
+	if (!derivative) {
+		return 1 / (1 + negativeEX);
+	} else {
+		return 1 / (1 + negativeEX) * (1 - 1 / (1 + negativeEX));
+	}
 };
 exports.Logistic = Logistic;
 /**
@@ -47,12 +45,11 @@ exports.Logistic = Logistic;
  * @param derivative calculate the derivative
  */
 const TANH = (x, derivative = false) => {
-    if (!derivative) {
-        return Math.tanh(x);
-    }
-    else {
-        return 1 - Math.pow(Math.tanh(x), 2);
-    }
+	if (!derivative) {
+		return Math.tanh(x);
+	} else {
+		return 1 - Math.pow(Math.tanh(x), 2);
+	}
 };
 exports.TANH = TANH;
 /**
@@ -62,34 +59,27 @@ exports.TANH = TANH;
  * @param derivative calculate the derivative
  */
 const SQNL = (x, derivative = false) => {
-    if (!derivative) {
-        if (x > 2) {
-            return 1;
-        }
-        else if (x >= 0) {
-            return x - Math.pow((x / 2), 2);
-        }
-        else if (x >= -2) {
-            return x + Math.pow((x / 2), 2);
-        }
-        else {
-            return -1;
-        }
-    }
-    else {
-        if (x > 2) {
-            return 0;
-        }
-        else if (x >= 0) {
-            return 1 - x / 2;
-        }
-        else if (x >= -2) {
-            return 1 + x / 2;
-        }
-        else {
-            return 0;
-        }
-    }
+	if (!derivative) {
+		if (x > 2) {
+			return 1;
+		} else if (x >= 0) {
+			return x - Math.pow((x / 2), 2);
+		} else if (x >= -2) {
+			return x + Math.pow((x / 2), 2);
+		} else {
+			return -1;
+		}
+	} else {
+		if (x > 2) {
+			return 0;
+		} else if (x >= 0) {
+			return 1 - x / 2;
+		} else if (x >= -2) {
+			return 1 + x / 2;
+		} else {
+			return 0;
+		}
+	}
 };
 exports.SQNL = SQNL;
 /**
@@ -99,12 +89,11 @@ exports.SQNL = SQNL;
  * @param derivative calculate the derivative
  */
 const ArcTan = (x, derivative = false) => {
-    if (!derivative) {
-        return Math.atan(x);
-    }
-    else {
-        return 1 / (Math.pow(x, 2) + 1);
-    }
+	if (!derivative) {
+		return Math.atan(x);
+	} else {
+		return 1 / (Math.pow(x, 2) + 1);
+	}
 };
 exports.ArcTan = ArcTan;
 /**
@@ -114,12 +103,11 @@ exports.ArcTan = ArcTan;
  * @param derivative calculate the derivative
  */
 const ArSinH = (x, derivative = false) => {
-    if (!derivative) {
-        return Math.asinh(x);
-    }
-    else {
-        return 1 / Math.pow((Math.pow(x, 2) + 1), (1 / 2));
-    }
+	if (!derivative) {
+		return Math.asinh(x);
+	} else {
+		return 1 / Math.pow((Math.pow(x, 2) + 1), (1 / 2));
+	}
 };
 exports.ArSinH = ArSinH;
 /**
@@ -129,12 +117,11 @@ exports.ArSinH = ArSinH;
  * @param derivative calculate the derivative
  */
 const SoftSign = (x, derivative = false) => {
-    if (!derivative) {
-        return x / (1 + Math.abs(x));
-    }
-    else {
-        return 1 / Math.pow((1 + Math.abs(x)), 2);
-    }
+	if (!derivative) {
+		return x / (1 + Math.abs(x));
+	} else {
+		return 1 / Math.pow((1 + Math.abs(x)), 2);
+	}
 };
 exports.SoftSign = SoftSign;
 /**
@@ -144,12 +131,11 @@ exports.SoftSign = SoftSign;
  * @param derivative calculate the derivative
  */
 const RELU = (x, derivative = false) => {
-    if (!derivative) {
-        return x > 0 ? x : 0;
-    }
-    else {
-        return x > 0 ? 1 : 0;
-    }
+	if (!derivative) {
+		return x > 0 ? x : 0;
+	} else {
+		return x > 0 ? 1 : 0;
+	}
 };
 exports.RELU = RELU;
 /**
@@ -159,12 +145,11 @@ exports.RELU = RELU;
  * @param derivative calculate the derivative
  */
 const LeakyRELU = (x, derivative = false) => {
-    if (!derivative) {
-        return x > 0 ? x : 0.01 * x;
-    }
-    else {
-        return x > 0 ? 1 : 0.01;
-    }
+	if (!derivative) {
+		return x > 0 ? x : 0.01 * x;
+	} else {
+		return x > 0 ? 1 : 0.01;
+	}
 };
 exports.LeakyRELU = LeakyRELU;
 /**
@@ -174,12 +159,11 @@ exports.LeakyRELU = LeakyRELU;
  * @param derivative calculate the derivative
  */
 const SoftPlus = (x, derivative = false) => {
-    if (!derivative) {
-        return Math.log(1 + Math.exp(x));
-    }
-    else {
-        return 1 / (1 + Math.exp(-x));
-    }
+	if (!derivative) {
+		return Math.log(1 + Math.exp(x));
+	} else {
+		return 1 / (1 + Math.exp(-x));
+	}
 };
 exports.SoftPlus = SoftPlus;
 /**
@@ -189,12 +173,11 @@ exports.SoftPlus = SoftPlus;
  * @param derivative calculate the derivative
  */
 const BentIdentity = (x, derivative = false) => {
-    if (!derivative) {
-        return (Math.pow((Math.pow(x, 2) + 1), (1 / 2)) - 1) / 2 + x;
-    }
-    else {
-        return x / (2 * Math.pow((Math.pow(x, 2) + 1), (1 / 2))) + 1;
-    }
+	if (!derivative) {
+		return (Math.pow((Math.pow(x, 2) + 1), (1 / 2)) - 1) / 2 + x;
+	} else {
+		return x / (2 * Math.pow((Math.pow(x, 2) + 1), (1 / 2))) + 1;
+	}
 };
 exports.BentIdentity = BentIdentity;
 /**
@@ -204,13 +187,12 @@ exports.BentIdentity = BentIdentity;
  * @param derivative calculate the derivative
  */
 const SiLU = (x, derivative = false) => {
-    const negativeEX = Math.exp(-x);
-    if (!derivative) {
-        return x / (1 + negativeEX);
-    }
-    else {
-        return (1 + negativeEX + x * negativeEX) / Math.pow((1 + negativeEX), 2);
-    }
+	const negativeEX = Math.exp(-x);
+	if (!derivative) {
+		return x / (1 + negativeEX);
+	} else {
+		return (1 + negativeEX + x * negativeEX) / Math.pow((1 + negativeEX), 2);
+	}
 };
 exports.SiLU = SiLU;
 /**
@@ -220,12 +202,11 @@ exports.SiLU = SiLU;
  * @param derivative calculate the derivative
  */
 const Sinusiod = (x, derivative = false) => {
-    if (!derivative) {
-        return Math.sin(x);
-    }
-    else {
-        return Math.cos(x);
-    }
+	if (!derivative) {
+		return Math.sin(x);
+	} else {
+		return Math.cos(x);
+	}
 };
 exports.Sinusiod = Sinusiod;
 /**
@@ -235,12 +216,11 @@ exports.Sinusiod = Sinusiod;
  * @param derivative calculate the derivative
  */
 const Sinc = (x, derivative = false) => {
-    if (!derivative) {
-        return x == 0 ? 1 : Math.sin(x) / x;
-    }
-    else {
-        return x == 0 ? 0 : Math.cos(x) / x - Math.sin(x) / Math.pow(x, 2);
-    }
+	if (!derivative) {
+		return x === 0 ? 1 : Math.sin(x) / x;
+	} else {
+		return x === 0 ? 0 : Math.cos(x) / x - Math.sin(x) / Math.pow(x, 2);
+	}
 };
 exports.Sinc = Sinc;
 /**
@@ -250,11 +230,10 @@ exports.Sinc = Sinc;
  * @param derivative calculate the derivative
  */
 const GAUSSIAN = (x, derivative = false) => {
-    if (!derivative) {
-        return 1 / Math.exp(Math.pow(x, 2));
-    }
-    else {
-        return -2 * x * Math.exp(-(Math.pow(x, 2)));
-    }
+	if (!derivative) {
+		return 1 / Math.exp(Math.pow(x, 2));
+	} else {
+		return -2 * x * Math.exp(-(Math.pow(x, 2)));
+	}
 };
 exports.GAUSSIAN = GAUSSIAN;
