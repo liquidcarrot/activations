@@ -119,10 +119,10 @@ describe("Activation", () => {
             chai_1.expect(src_1.Sinusiod(value, true)).closeTo(Math.cos(value), deltaValue);
         });
         it("Sinc value=" + value + "; derivative=false", () => {
-            chai_1.expect(src_1.Sinc(value, false)).closeTo(value == 0 ? 1 : Math.sin(value) / value, deltaValue);
+            chai_1.expect(src_1.Sinc(value, false)).closeTo(value === 0 ? 1 : Math.sin(value) / value, deltaValue);
         });
         it("Sinc value=" + value + "; derivative=true", () => {
-            chai_1.expect(src_1.Sinc(value, true)).closeTo(value == 0 ? 0 : Math.cos(value) / value - Math.sin(value) / (value * value), deltaValue);
+            chai_1.expect(src_1.Sinc(value, true)).closeTo(value === 0 ? 0 : Math.cos(value) / value - Math.sin(value) / (value * value), deltaValue);
         });
         it("GAUSSIAN value=" + value + "; derivative=false", () => {
             chai_1.expect(src_1.GAUSSIAN(value, false)).closeTo(Math.exp(-value * value), deltaValue);
