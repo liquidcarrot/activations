@@ -70,12 +70,14 @@ describe("Activation", () => {
         });
         it("SQNL value=" + value + "; derivative=true", () => {
             let z: number = value;
-            if (z < 0 || z > 2) {
+            if (z > 2) {
                 z = 0;
             } else if (z >= 0) {
                 z = 1 - z / 2;
             } else if (z >= -2) {
                 z = 1 + z / 2;
+            } else {
+                z = 0;
             }
 
             expect(SQNL(value, true)).closeTo(z, deltaValue);

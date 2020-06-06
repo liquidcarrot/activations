@@ -67,12 +67,14 @@ const SQNL = (x: number, derivative: boolean = false): number => {
             return -1;
         }
     } else {
-        if (x < 0 || x > 2) {
+        if (x > 2) {
             return 0;
         } else if (x >= 0) {
             return 1 - x / 2;
         } else if (x >= -2) {
             return 1 + x / 2;
+        } else {
+            return 0;
         }
     }
 };

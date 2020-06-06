@@ -77,7 +77,7 @@ const SQNL = (x, derivative = false) => {
         }
     }
     else {
-        if (x < 0 || x > 2) {
+        if (x > 2) {
             return 0;
         }
         else if (x >= 0) {
@@ -85,6 +85,9 @@ const SQNL = (x, derivative = false) => {
         }
         else if (x >= -2) {
             return 1 + x / 2;
+        }
+        else {
+            return 0;
         }
     }
 };

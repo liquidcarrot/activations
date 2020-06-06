@@ -50,7 +50,7 @@ describe("Activation", () => {
         });
         it("SQNL value=" + value + "; derivative=true", () => {
             let z = value;
-            if (z < 0 || z > 2) {
+            if (z > 2) {
                 z = 0;
             }
             else if (z >= 0) {
@@ -58,6 +58,9 @@ describe("Activation", () => {
             }
             else if (z >= -2) {
                 z = 1 + z / 2;
+            }
+            else {
+                z = 0;
             }
             chai_1.expect(src_1.SQNL(value, true)).closeTo(z, deltaValue);
         });

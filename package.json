@@ -11,9 +11,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "\t"
+    "url": "https://github.com/raimannma/activations"
   },
-  "author": "Manuel Raimann",
+  "author": "Manuel Raimann <raimannma@outlook.de>",
   "license": "MIT",
   "devDependencies": {
     "@types/chai": "^4.2.11",
