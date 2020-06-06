@@ -22,7 +22,7 @@ const BinaryStep = (x: number, derivative: boolean = false): number => {
 
 /**
  * The Logistic activation function.
- * @see Logisitic function {@link https://en.wikipedia.org/wiki/Logistic_function}
+ * @see Logistic function {@link https://en.wikipedia.org/wiki/Logistic_function}
  * @param x the input value
  * @param derivative calculate the derivative
  */
