@@ -112,3 +112,4 @@ declare const Sinc: ActivationType;
  */
 declare const GAUSSIAN: ActivationType;
 export { Identitiy, BinaryStep, Logistic, TANH, SQNL, ArcTan, ArSinH, SoftSign, RELU, LeakyRELU, SoftPlus, BentIdentity, SiLU, Sinusiod, Sinc, GAUSSIAN };
+export declare const ALL_ACTIVATIONS: ActivationType[];

@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.GAUSSIAN = exports.Sinc = exports.Sinusiod = exports.SiLU = exports.BentIdentity = exports.SoftPlus = exports.LeakyRELU = exports.RELU = exports.SoftSign = exports.ArSinH = exports.ArcTan = exports.SQNL = exports.TANH = exports.Logistic = exports.BinaryStep = exports.Identitiy = void 0;
+exports.ALL_ACTIVATIONS = exports.GAUSSIAN = exports.Sinc = exports.Sinusiod = exports.SiLU = exports.BentIdentity = exports.SoftPlus = exports.LeakyRELU = exports.RELU = exports.SoftSign = exports.ArSinH = exports.ArcTan = exports.SQNL = exports.TANH = exports.Logistic = exports.BinaryStep = exports.Identitiy = void 0;
 /**
  * The Identity activation function.
  * @see Identity function {@link https://en.wikipedia.org/wiki/Identity_function}
@@ -258,3 +258,21 @@ const GAUSSIAN = (x, derivative = false) => {
     }
 };
 exports.GAUSSIAN = GAUSSIAN;
+exports.ALL_ACTIVATIONS = [
+    Identitiy,
+    BinaryStep,
+    Logistic,
+    TANH,
+    SQNL,
+    ArcTan,
+    ArSinH,
+    SoftSign,
+    RELU,
+    LeakyRELU,
+    SoftPlus,
+    BentIdentity,
+    SiLU,
+    Sinusiod,
+    Sinc,
+    GAUSSIAN
+];
