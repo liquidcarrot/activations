@@ -27,7 +27,9 @@ jobs:
       - run: tsc
       - run: npm run build
       - run: npm run deploy:docs
-      - run: npm publish
+      - run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Apply automatic changes
