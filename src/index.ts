@@ -254,3 +254,22 @@ export {
     Sinc,
     GAUSSIAN
 }
+
+export const ALL_ACTIVATIONS: ActivationType[] = [
+    Identitiy,
+    BinaryStep,
+    Logistic,
+    TANH,
+    SQNL,
+    ArcTan,
+    ArSinH,
+    SoftSign,
+    RELU,
+    LeakyRELU,
+    SoftPlus,
+    BentIdentity,
+    SiLU,
+    Sinusiod,
+    Sinc,
+    GAUSSIAN
+]
