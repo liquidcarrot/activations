@@ -1,10 +1,12 @@
+export type ActivationType = (x: number, derivative?: boolean) => number;
+
 /**
  * The Identity activation function.
  * @see Identity function {@link https://en.wikipedia.org/wiki/Identity_function}
  * @param x the input value
  * @param derivative calculate the derivative
  */
-const Identitiy = (x: number, derivative: boolean = false): number => !derivative ? x : 1;
+const Identitiy: ActivationType = (x: number, derivative: boolean = false): number => !derivative ? x : 1;
 
 /**
  * The Binary-Step activation function.
@@ -12,7 +14,7 @@ const Identitiy = (x: number, derivative: boolean = false): number => !derivativ
  * @param x the input value
  * @param derivative calculate the derivative
  */
-const BinaryStep = (x: number, derivative: boolean = false): number => {
+const BinaryStep: ActivationType = (x: number, derivative: boolean = false): number => {
     if (!derivative) {
         return x < 0 ? 0 : 1;
     } else {
@@ -26,7 +28,7 @@ const BinaryStep = (x: number, derivative: boolean = false): number => {
  * @param x the input value
  * @param derivative calculate the derivative
  */
-const Logistic = (x: number, derivative: boolean = false): number => {
+const Logistic: ActivationType = (x: number, derivative: boolean = false): number => {
     const negativeEX: number = Math.exp(-x);
     if (!derivative) {
         return 1 / (1 + negativeEX);
@@ -41,7 +43,7 @@ const Logistic = (x: number, derivative: boolean = false): number => {
  * @param x the input value
  * @param derivative calculate the derivative
  */
-const TANH = (x: number, derivative: boolean = false): number => {
+const TANH: ActivationType = (x: number, derivative: boolean = false): number => {
     if (!derivative) {
         return Math.tanh(x);
     } else {
@@ -55,7 +57,7 @@ const TANH = (x: number, derivative: boolean = false): number => {
  * @param x the input value
  * @param derivative calculate the derivative
  */
-const SQNL = (x: number, derivative: boolean = false): number => {
+const SQNL: ActivationType = (x: number, derivative: boolean = false): number => {
     if (!derivative) {
         if (x > 2) {
             return 1;
@@ -85,7 +87,7 @@ const SQNL = (x: number, derivative: boolean = false): number => {
  * @param x the input value
  * @param derivative calculate the derivative
  */
-const ArcTan = (x: number, derivative: boolean = false): number => {
+const ArcTan: ActivationType = (x: number, derivative: boolean = false): number => {
     if (!derivative) {
         return Math.atan(x);
     } else {
@@ -99,7 +101,7 @@ const ArcTan = (x: number, derivative: boolean = false): number => {
  * @param x the input value
  * @param derivative calculate the derivative
  */
-const ArSinH = (x: number, derivative: boolean = false): number => {
+const ArSinH: ActivationType = (x: number, derivative: boolean = false): number => {
     if (!derivative) {
         return Math.asinh(x);
     } else {
@@ -113,7 +115,7 @@ const ArSinH = (x: number, derivative: boolean = false): number => {
  * @param x the input value
  * @param derivative calculate the derivative
  */
-const SoftSign = (x: number, derivative: boolean = false): number => {
+const SoftSign: ActivationType = (x: number, derivative: boolean = false): number => {
     if (!derivative) {
         return x / (1 + Math.abs(x));
     } else {
@@ -127,7 +129,7 @@ const SoftSign = (x: number, derivative: boolean = false): number => {
  * @param x the input value
  * @param derivative calculate the derivative
  */
-const RELU = (x: number, derivative: boolean = false): number => {
+const RELU: ActivationType = (x: number, derivative: boolean = false): number => {
     if (!derivative) {
         return x > 0 ? x : 0;
     } else {
@@ -141,7 +143,7 @@ const RELU = (x: number, derivative: boolean = false): number => {
  * @param x the input value
  * @param derivative calculate the derivative
  */
-const LeakyRELU = (x: number, derivative: boolean = false): number => {
+const LeakyRELU: ActivationType = (x: number, derivative: boolean = false): number => {
     if (!derivative) {
         return x > 0 ? x : 0.01 * x;
     } else {
@@ -155,7 +157,7 @@ const LeakyRELU = (x: number, derivative: boolean = false): number => {
  * @param x the input value
  * @param derivative calculate the derivative
  */
-const SoftPlus = (x: number, derivative: boolean = false): number => {
+const SoftPlus: ActivationType = (x: number, derivative: boolean = false): number => {
     if (!derivative) {
         return Math.log(1 + Math.exp(x));
     } else {
@@ -169,7 +171,7 @@ const SoftPlus = (x: number, derivative: boolean = false): number => {
  * @param x the input value
  * @param derivative calculate the derivative
  */
-const BentIdentity = (x: number, derivative: boolean = false): number => {
+const BentIdentity: ActivationType = (x: number, derivative: boolean = false): number => {
     if (!derivative) {
         return ((x ** 2 + 1) ** (1 / 2) - 1) / 2 + x;
     } else {
@@ -183,7 +185,7 @@ const BentIdentity = (x: number, derivative: boolean = false): number => {
  * @param x the input value
  * @param derivative calculate the derivative
  */
-const SiLU = (x: number, derivative: boolean = false): number => {
+const SiLU: ActivationType = (x: number, derivative: boolean = false): number => {
     const negativeEX: number = Math.exp(-x);
     if (!derivative) {
         return x / (1 + negativeEX);
@@ -198,7 +200,7 @@ const SiLU = (x: number, derivative: boolean = false): number => {
  * @param x the input value
  * @param derivative calculate the derivative
  */
-const Sinusiod = (x: number, derivative: boolean = false): number => {
+const Sinusiod: ActivationType = (x: number, derivative: boolean = false): number => {
     if (!derivative) {
         return Math.sin(x);
     } else {
@@ -212,7 +214,7 @@ const Sinusiod = (x: number, derivative: boolean = false): number => {
  * @param x the input value
  * @param derivative calculate the derivative
  */
-const Sinc = (x: number, derivative: boolean = false): number => {
+const Sinc: ActivationType = (x: number, derivative: boolean = false): number => {
     if (!derivative) {
         return x === 0 ? 1 : Math.sin(x) / x;
     } else {
@@ -226,7 +228,7 @@ const Sinc = (x: number, derivative: boolean = false): number => {
  * @param x the input value
  * @param derivative calculate the derivative
  */
-const GAUSSIAN = (x: number, derivative: boolean = false): number => {
+const GAUSSIAN: ActivationType = (x: number, derivative: boolean = false): number => {
     if (!derivative) {
         return 1 / Math.exp(x ** 2);
     } else {
