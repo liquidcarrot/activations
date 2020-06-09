@@ -30,7 +30,10 @@ jobs:
       - run: tsc
       - run: npm run build
       - run: npm run deploy:docs
-      - run: npm version patch && npm publish --access public
+      - run: npm version patch
+          env:
+            NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+      - run: npm publish --access public
           env:
             NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
       - uses: stefanzweifel/git-auto-commit-action@v4
