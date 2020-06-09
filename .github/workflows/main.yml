@@ -22,23 +22,14 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-          registry-url: https://registry.npmjs.org/
-      - run: git config --global user.email "githubbot@carrot.de" && git config --global user.name "Github Actions CI"
-      - run:
       - run: npm ci
       - run: npm run build --if-present
-      - run: tsc
-      - run: npm run build
       - run: npm run deploy:docs
-      - run: npm version patch
-          env:
-            NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
-      - run: npm publish --access public
-          env:
-            NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: Apply automatic changes
+          commit_message: [CI] Build project
           commit_options: '--no-verify'
           commit_user_name: GitHub Actions Bot
 
@@ -57,5 +48,4 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - run: npm ci
       - run: npm run build --if-present
-      - run: tsc
       - run: npm test
