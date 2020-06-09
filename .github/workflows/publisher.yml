@@ -32,10 +32,6 @@ jobs:
       - run: git config --global user.email "github@carrot.com"
       - run: git config --global user.name "Github CI"
       - run: npm version patch
-      - run: npm ci
-      - run: npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
       - name: commit
         uses: github-actions-x/commit@v2.6
         with:
@@ -45,3 +41,7 @@ jobs:
           force-add: 'true'
           name: Github Action
           email: github@carrot.com
+      - run: npm ci
+      - run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
