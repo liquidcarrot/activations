@@ -32,15 +32,11 @@ jobs:
       - run: git config --global user.email "github@carrot.com"
       - run: git config --global user.name "Github CI"
       - run: npm version patch
-      - name: commit
-        uses: github-actions-x/commit@v2.6
+      - uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          push-branch: 'master'
-          commit-message: 'increase version'
-          force-add: 'true'
-          name: Github Action
-          email: github@carrot.com
+          commit_message: Increase version
+          commit_options: '--no-verify'
+          commit_user_name: GitHub Actions Bot
       - run: npm ci
       - run: npm publish --access public
         env:
