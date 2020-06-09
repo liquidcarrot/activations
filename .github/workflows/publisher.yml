@@ -37,7 +37,7 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
       - uses: stefanzweifel/git-auto-commit-action@v4
-          with:
-            commit_message: Increase version number
-            commit_options: '--no-verify'
-            commit_user_name: GitHub Actions Bot
+        with:
+          commit_message: Increase version number
+          commit_options: '--no-verify'
+          commit_user_name: GitHub Actions Bot
