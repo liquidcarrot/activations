@@ -16,9 +16,6 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: 14
-      - run: git config --global user.email "github@carrot.com"
-      - run: git config --global user.name "Github CI"
-      - run: npm version patch
       - run: npm ci
       - run: npm run build --if-present
       - run: npm run deploy:docs
@@ -32,6 +29,9 @@ jobs:
         with:
           node-version: 14
           registry-url: https://registry.npmjs.org/
+      - run: git config --global user.email "github@carrot.com"
+      - run: git config --global user.name "Github CI"
+      - run: npm version patch
       - run: npm ci
       - run: npm publish
         env:
@@ -46,6 +46,9 @@ jobs:
         with:
           node-version: 14
           registry-url: https://npm.pkg.github.com/
+      - run: git config --global user.email "github@carrot.com"
+      - run: git config --global user.name "Github CI"
+      - run: npm version patch
       - run: npm ci
       - run: npm publish
         env:
