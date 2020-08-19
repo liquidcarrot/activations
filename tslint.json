@@ -1,0 +1,26 @@
+{
+  "rules": {
+    "typedef": [
+      true,
+      "call-signature",
+      "parameter",
+      "arrow-parameter",
+      "property-declaration",
+      "object-destructuring",
+      "array-destructuring",
+      "member-variable-declaration"
+    ],
+    "prefer-const": true,
+    "completed-docs": [
+      true,
+      "enums",
+      "functions",
+      "methods",
+      "classes",
+      "enum-members",
+      "interfaces",
+      "namespaces",
+      "properties"
+    ]
+  }
+}
