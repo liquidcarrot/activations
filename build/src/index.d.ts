@@ -1,7 +1,4 @@
-export declare type ActivationType = (
-  x: number,
-  derivative?: boolean
-) => number;
+export declare type ActivationType = (x: number, derivative?: boolean) => number;
 /**
  * The Identity activation function.
  * @see Identity function {@link https://en.wikipedia.org/wiki/Identity_function}
@@ -114,22 +111,5 @@ declare const Sinc: ActivationType;
  * @param derivative calculate the derivative
  */
 declare const GAUSSIAN: ActivationType;
-export {
-  Identitiy,
-  BinaryStep,
-  Logistic,
-  TANH,
-  SQNL,
-  ArcTan,
-  ArSinH,
-  SoftSign,
-  RELU,
-  LeakyRELU,
-  SoftPlus,
-  BentIdentity,
-  SiLU,
-  Sinusiod,
-  Sinc,
-  GAUSSIAN,
-};
+export { Identitiy, BinaryStep, Logistic, TANH, SQNL, ArcTan, ArSinH, SoftSign, RELU, LeakyRELU, SoftPlus, BentIdentity, SiLU, Sinusiod, Sinc, GAUSSIAN, };
 export declare const ALL_ACTIVATIONS: ActivationType[];
