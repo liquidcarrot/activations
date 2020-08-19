@@ -6,8 +6,27 @@
   "scripts": {
     "build": "tsc",
     "deploy:docs": "typedoc --theme minimal --inputFiles ./src --name Activations --includeVersion",
-    "test": "tsc && mocha build/test --recursive",
+    "test": "mocha --recursive build/test/",
+    "check": "npm run check:src && npm run check:test",
+    "check:src": "prettier --check \"./src/**/*.ts\"",
+    "check:test": "prettier --check \"./test/**/*.ts\"",
+    "fix": "npm run fix:src && npm run fix:test",
+    "fix:src": "prettier --write \"./src/**/*.ts\"",
+    "fix:test": "prettier --write \"./test/**/*.ts\"",
+    "pretest": "tsc",
+    "posttest": "npm run check",
     "lint": "tslint --project ./"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "**/*": [
+      "prettier --write"
+    ],
+    "*.{js,css,md}": "prettier --write"
   },
   "repository": {
     "type": "git",
@@ -20,15 +39,12 @@
     "@types/mocha": "^7.0.2",
     "chai": "^4.2.0",
     "husky": "^4.2.5",
+    "lint-staged": "^10.2.11",
     "mocha": "^7.1.2",
+    "prettier": "2.0.5",
+    "random-js": "^2.1.0",
     "tslint": "^6.1.2",
     "typedoc": "^0.17.6",
-    "typescript": "^3.9.2",
-    "random-js": "^2.1.0"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm test"
-    }
+    "typescript": "^3.9.2"
   }
 }
