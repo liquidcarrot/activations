@@ -6,10 +6,10 @@ export type ActivationType = (x: number, derivative?: boolean) => number;
  * @param x the input value
  * @param derivative calculate the derivative
  */
-export const Identitiy: ActivationType = (
+const Identitiy: ActivationType = (
   x: number,
   derivative: boolean = false
-): number => (!derivative ? x : 1);
+): number => (derivative ? 1 : x);
 
 /**
  * The Binary-Step activation function.
@@ -17,15 +17,12 @@ export const Identitiy: ActivationType = (
  * @param x the input value
  * @param derivative calculate the derivative
  */
-export const BinaryStep: ActivationType = (
+const BinaryStep: ActivationType = (
   x: number,
   derivative: boolean = false
 ): number => {
-  if (!derivative) {
-    return x < 0 ? 0 : 1;
-  } else {
-    return 0;
-  }
+  if (derivative) return 0;
+  else return x < 0 ? 0 : 1;
 };
 
 /**
@@ -34,16 +31,13 @@ export const BinaryStep: ActivationType = (
  * @param x the input value
  * @param derivative calculate the derivative
  */
-export const Logistic: ActivationType = (
+const Logistic: ActivationType = (
   x: number,
   derivative: boolean = false
 ): number => {
   const negativeEX: number = Math.exp(-x);
-  if (!derivative) {
-    return 1 / (1 + negativeEX);
-  } else {
-    return (1 / (1 + negativeEX)) * (1 - 1 / (1 + negativeEX));
-  }
+  if (derivative) return (1 / (1 + negativeEX)) * (1 - 1 / (1 + negativeEX));
+  else return 1 / (1 + negativeEX);
 };
 
 /**
@@ -52,15 +46,12 @@ export const Logistic: ActivationType = (
  * @param x the input value
  * @param derivative calculate the derivative
  */
-export const TANH: ActivationType = (
+const TANH: ActivationType = (
   x: number,
   derivative: boolean = false
 ): number => {
-  if (!derivative) {
-    return Math.tanh(x);
-  } else {
-    return 1 - Math.tanh(x) ** 2;
-  }
+  if (derivative) return 1 - Math.tanh(x) ** 2;
+  else return Math.tanh(x);
 };
 
 /**
@@ -69,30 +60,20 @@ export const TANH: ActivationType = (
  * @param x the input value
  * @param derivative calculate the derivative
  */
-export const SQNL: ActivationType = (
+const SQNL: ActivationType = (
   x: number,
   derivative: boolean = false
 ): number => {
-  if (!derivative) {
-    if (x > 2) {
-      return 1;
-    } else if (x >= 0) {
-      return x - (x / 2) ** 2;
-    } else if (x >= -2) {
-      return x + (x / 2) ** 2;
-    } else {
-      return -1;
-    }
+  if (derivative) {
+    if (x > 2) return 0;
+    else if (x >= 0) return 1 - x / 2;
+    else if (x >= -2) return 1 + x / 2;
+    else return 0;
   } else {
-    if (x > 2) {
-      return 0;
-    } else if (x >= 0) {
-      return 1 - x / 2;
-    } else if (x >= -2) {
-      return 1 + x / 2;
-    } else {
-      return 0;
-    }
+    if (x > 2) return 1;
+    else if (x >= 0) return x - (x / 2) ** 2;
+    else if (x >= -2) return x + (x / 2) ** 2;
+    else return -1;
   }
 };
 
@@ -102,15 +83,12 @@ export const SQNL: ActivationType = (
  * @param x the input value
  * @param derivative calculate the derivative
  */
-export const ArcTan: ActivationType = (
+const ArcTan: ActivationType = (
   x: number,
   derivative: boolean = false
 ): number => {
-  if (!derivative) {
-    return Math.atan(x);
-  } else {
-    return 1 / (x ** 2 + 1);
-  }
+  if (derivative) return 1 / (x ** 2 + 1);
+  else return Math.atan(x);
 };
 
 /**
@@ -119,15 +97,12 @@ export const ArcTan: ActivationType = (
  * @param x the input value
  * @param derivative calculate the derivative
  */
-export const ArSinH: ActivationType = (
+const ArSinH: ActivationType = (
   x: number,
   derivative: boolean = false
 ): number => {
-  if (!derivative) {
-    return Math.asinh(x);
-  } else {
-    return 1 / (x ** 2 + 1) ** (1 / 2);
-  }
+  if (derivative) return 1 / (x ** 2 + 1) ** (1 / 2);
+  else return Math.asinh(x);
 };
 
 /**
@@ -136,15 +111,12 @@ export const ArSinH: ActivationType = (
  * @param x the input value
  * @param derivative calculate the derivative
  */
-export const SoftSign: ActivationType = (
+const SoftSign: ActivationType = (
   x: number,
   derivative: boolean = false
 ): number => {
-  if (!derivative) {
-    return x / (1 + Math.abs(x));
-  } else {
-    return 1 / (1 + Math.abs(x)) ** 2;
-  }
+  if (derivative) return 1 / (1 + Math.abs(x)) ** 2;
+  else return x / (1 + Math.abs(x));
 };
 
 /**
@@ -153,15 +125,12 @@ export const SoftSign: ActivationType = (
  * @param x the input value
  * @param derivative calculate the derivative
  */
-export const RELU: ActivationType = (
+const RELU: ActivationType = (
   x: number,
   derivative: boolean = false
 ): number => {
-  if (!derivative) {
-    return x > 0 ? x : 0;
-  } else {
-    return x > 0 ? 1 : 0;
-  }
+  if (derivative) return x > 0 ? 1 : 0;
+  else return x > 0 ? x : 0;
 };
 
 /**
@@ -170,15 +139,12 @@ export const RELU: ActivationType = (
  * @param x the input value
  * @param derivative calculate the derivative
  */
-export const LeakyRELU: ActivationType = (
+const LeakyRELU: ActivationType = (
   x: number,
   derivative: boolean = false
 ): number => {
-  if (!derivative) {
-    return x > 0 ? x : 0.01 * x;
-  } else {
-    return x > 0 ? 1 : 0.01;
-  }
+  if (derivative) return x > 0 ? 1 : 0.01;
+  else return x > 0 ? x : 0.01 * x;
 };
 
 /**
@@ -187,15 +153,12 @@ export const LeakyRELU: ActivationType = (
  * @param x the input value
  * @param derivative calculate the derivative
  */
-export const SoftPlus: ActivationType = (
+const SoftPlus: ActivationType = (
   x: number,
   derivative: boolean = false
 ): number => {
-  if (!derivative) {
-    return Math.log(1 + Math.exp(x));
-  } else {
-    return 1 / (1 + Math.exp(-x));
-  }
+  if (derivative) return 1 / (1 + Math.exp(-x));
+  else return Math.log(1 + Math.exp(x));
 };
 
 /**
@@ -204,15 +167,12 @@ export const SoftPlus: ActivationType = (
  * @param x the input value
  * @param derivative calculate the derivative
  */
-export const BentIdentity: ActivationType = (
+const BentIdentity: ActivationType = (
   x: number,
   derivative: boolean = false
 ): number => {
-  if (!derivative) {
-    return ((x ** 2 + 1) ** (1 / 2) - 1) / 2 + x;
-  } else {
-    return x / (2 * (x ** 2 + 1) ** (1 / 2)) + 1;
-  }
+  if (derivative) return x / (2 * (x ** 2 + 1) ** (1 / 2)) + 1;
+  else return ((x ** 2 + 1) ** (1 / 2) - 1) / 2 + x;
 };
 
 /**
@@ -221,16 +181,14 @@ export const BentIdentity: ActivationType = (
  * @param x the input value
  * @param derivative calculate the derivative
  */
-export const SiLU: ActivationType = (
+const SiLU: ActivationType = (
   x: number,
   derivative: boolean = false
 ): number => {
   const negativeEX: number = Math.exp(-x);
-  if (!derivative) {
-    return x / (1 + negativeEX);
-  } else {
+  if (derivative)
     return (1 + negativeEX + x * negativeEX) / (1 + negativeEX) ** 2;
-  }
+  else return x / (1 + negativeEX);
 };
 
 /**
@@ -239,15 +197,12 @@ export const SiLU: ActivationType = (
  * @param x the input value
  * @param derivative calculate the derivative
  */
-export const Sinusiod: ActivationType = (
+const Sinusiod: ActivationType = (
   x: number,
   derivative: boolean = false
 ): number => {
-  if (!derivative) {
-    return Math.sin(x);
-  } else {
-    return Math.cos(x);
-  }
+  if (derivative) return Math.cos(x);
+  else return Math.sin(x);
 };
 
 /**
@@ -256,14 +211,16 @@ export const Sinusiod: ActivationType = (
  * @param x the input value
  * @param derivative calculate the derivative
  */
-export const Sinc: ActivationType = (
+const Sinc: ActivationType = (
   x: number,
   derivative: boolean = false
 ): number => {
-  if (!derivative) {
-    return x === 0 ? 1 : Math.sin(x) / x;
+  if (derivative) {
+    if (x === 0) return 0;
+    else return Math.cos(x) / x - Math.sin(x) / x ** 2;
   } else {
-    return x === 0 ? 0 : Math.cos(x) / x - Math.sin(x) / x ** 2;
+    if (x === 0) return 1;
+    else return Math.sin(x) / x;
   }
 };
 
@@ -273,15 +230,31 @@ export const Sinc: ActivationType = (
  * @param x the input value
  * @param derivative calculate the derivative
  */
-export const GAUSSIAN: ActivationType = (
+const GAUSSIAN: ActivationType = (
   x: number,
   derivative: boolean = false
 ): number => {
-  if (!derivative) {
-    return 1 / Math.exp(x ** 2);
-  } else {
-    return -2 * x * Math.exp(-(x ** 2));
-  }
+  if (derivative) return -2 * x * Math.exp(-(x ** 2));
+  else return 1 / Math.exp(x ** 2);
+};
+
+export {
+  Identitiy,
+  BinaryStep,
+  Logistic,
+  TANH,
+  SQNL,
+  ArcTan,
+  ArSinH,
+  SoftSign,
+  RELU,
+  LeakyRELU,
+  SoftPlus,
+  BentIdentity,
+  SiLU,
+  Sinusiod,
+  Sinc,
+  GAUSSIAN,
 };
 
 export const ALL_ACTIVATIONS: ActivationType[] = [
