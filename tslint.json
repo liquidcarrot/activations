@@ -1,27 +1,36 @@
 {
+  "defaultSeverity": "error",
+  "extends": ["tslint:recommended"],
+  "jsRules": {},
   "rules": {
+    "completed-docs": [
+      true,
+      {
+        "enums": {
+          "visibilities": "exported"
+        },
+        "functions": {
+          "visibilities": "exported"
+        },
+        "methods": {
+          "privacies": ["public", "protected"]
+        }
+      }
+    ],
     "typedef": [
       true,
       "call-signature",
       "parameter",
-      "arrow-parameter",
       "property-declaration",
+      "member-variable-declaration",
       "object-destructuring",
-      "array-destructuring",
-      "member-variable-declaration"
+      "array-destructuring"
     ],
-    "prefer-const": true,
-    "completed-docs": [
-      true,
-      "enums",
-      "functions",
-      "methods",
-      "classes",
-      "enum-members",
-      "interfaces",
-      "namespaces",
-      "properties"
-    ]
-  }
+    "no-console": false,
+    "no-shadowed-variable": false,
+    "radix": false,
+    "max-classes-per-file": false,
+    "member-access": true
+  },
+  "rulesDirectory": []
 }
-
