@@ -45,6 +45,8 @@ jobs:
           node-version: "14.x"
           registry-url: "https://registry.npmjs.org"
           scope: "@raimannma"
+      - run: git config --global user.email "ci@github.com"
+      - run: git config --global user.name "CI"
       - run: npm install
       - run: npm version patch
       - run: npm publish --access public
