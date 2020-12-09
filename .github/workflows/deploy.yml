@@ -46,6 +46,7 @@ jobs:
           registry-url: "https://registry.npmjs.org"
           scope: "@raimannma"
       - run: npm install
+      - run: npm version patch
       - run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
