@@ -8,10 +8,9 @@ on:
       - master
 
 jobs:
-  build:
+  npm-publish:
+    name: Publish Project
     runs-on: ubuntu-latest
-    name: Build Project
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@master
@@ -19,6 +18,8 @@ jobs:
         uses: actions/setup-node@master
         with:
           node-version: "14.x"
+          registry-url: "https://registry.npmjs.org"
+          scope: "@raimannma"
       - run: npm ci
       - run: git config --global user.email "ci@github.com"
       - run: git config --global user.name "CI"
@@ -31,24 +32,6 @@ jobs:
       - run: git diff
       - run: git commit -m "Build Project"
       - run: git push --force
-
-  npm-publish:
-    needs:
-      - build
-    name: Publish Project
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@master
-      - name: Set up Node.js
-        uses: actions/setup-node@master
-        with:
-          node-version: "14.x"
-          registry-url: "https://registry.npmjs.org"
-          scope: "@raimannma"
-      - run: git config --global user.email "ci@github.com"
-      - run: git config --global user.name "CI"
-      - run: npm install
       - run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
