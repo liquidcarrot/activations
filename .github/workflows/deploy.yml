@@ -26,7 +26,7 @@ jobs:
       - run: npm version patch
       - run: git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
       - run: git add package.json
-      - run: git commit --amend
+      - run: git commit --amend --no-edit
       - run: git push --force
       - run: npm publish --access public
         env:
