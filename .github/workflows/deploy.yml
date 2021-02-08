@@ -23,6 +23,7 @@ jobs:
       - run: npm run build --if-present
       - run: npm run fix
       - run: npm run deploy:docs
+      - run: npm version patch
       - run: git config --global user.email "ci@github.com"
       - run: git config --global user.name "CI"
       - run: git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
@@ -48,7 +49,6 @@ jobs:
       - run: git config --global user.email "ci@github.com"
       - run: git config --global user.name "CI"
       - run: npm install
-      - run: npm version patch
       - run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
