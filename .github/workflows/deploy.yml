@@ -11,6 +11,7 @@ jobs:
   npm-publish:
     name: Publish Project
     runs-on: ubuntu-latest
+    continue-on-error: true
     steps:
       - name: Checkout repository
         uses: actions/checkout@master
@@ -21,13 +22,6 @@ jobs:
           registry-url: "https://registry.npmjs.org"
           scope: "@raimannma"
       - run: npm ci
-      - run: git config --global user.email "ci@github.com"
-      - run: git config --global user.name "CI"
-      - run: npm version patch
-      - run: git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
-      - run: git add package.json
-      - run: git commit --amend --no-edit
-      - run: git push --force
       - run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
